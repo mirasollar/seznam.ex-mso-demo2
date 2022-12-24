@@ -1,19 +1,13 @@
 {
   "type": "object",
-  "title": "extractor configuration",
+  "title": "Authentication",
   "required": [
-    "print_hello"
+    "#private_app_token"
   ],
   "properties": {
-    "print_hello": {
-      "type": "boolean",
-      "title": "Print Hello",
-      "propertyOrder": 1
-    },
-    "debug": {
-      "type": "boolean",
-      "title": "Debug",
-      "propertyOrder": 2
+    "#private_app_token": {
+      "type": "string",
+      "title": "Private App Token"
     }
   }
 }
