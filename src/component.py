@@ -5,7 +5,7 @@ Template Component main class.
 import csv
 import logging
 from datetime import datetime
-import mso_hapi
+import mso_hapi as hapi
 
 from keboola.component.base import ComponentBase
 from keboola.component.exceptions import UserException
@@ -16,7 +16,6 @@ KEY_API_TOKEN = '#private_app_token'
 # list of mandatory parameters => if some is missing,
 # component will fail with readable message on initialization.
 REQUIRED_PARAMETERS = [KEY_API_TOKEN]
-
 
 class Component(ComponentBase):
     """
@@ -57,22 +56,18 @@ class Component(ComponentBase):
 
         # DO whatever and save into out_table_path
         token = params.get(KEY_API_TOKEN)
-        hubspot_data = HubspotAPI(token)
+        hubspot_data = hapi.HubspotAPI(token)
 
         deals = hubspot_data.getDeals()
 
         out_file = csv.writer(open(table.full_path, mode="wt", encoding='utf-8', newline=''))
-
         out_file.writerow(["id", "amount", "dealname", "timestamp"])
-
         for deals in deals:
             out_file.writerow([deals["id"],
                         deals["properties"]["amount"],
                         deals["properties"]["dealname"],
                         datetime.now().isoformat()
                         ])
-
-
 
         # with open(table.full_path, mode='wt', encoding='utf-8', newline='') as out_file:
         #     writer = csv.DictWriter(out_file, fieldnames=['timestamp'])
