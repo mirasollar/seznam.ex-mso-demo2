@@ -64,9 +64,9 @@ class Component(ComponentBase):
         out_file = csv.writer(open(table.full_path, mode="wt", encoding='utf-8', newline=''))
         out_file.writerow(["id", "amount", "dealname", "timestamp"])
         for deals in deals:
-            out_file.writerow([deals["id"], 
-                               deals["properties"]["amount"], 
-                               deals["properties"]["dealname"], 
+            out_file.writerow([deals["id"],
+                               deals["properties"]["amount"],
+                               deals["properties"]["dealname"],
                                datetime.now().isoformat()])
 
         # with open(table.full_path, mode='wt', encoding='utf-8', newline='') as out_file:
