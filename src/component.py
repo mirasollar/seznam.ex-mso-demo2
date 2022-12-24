@@ -49,7 +49,7 @@ class Component(ComponentBase):
         # logging.info(previous_state.get('some_state_parameter'))
 
         # Create output table (Tabledefinition - just metadata)
-        table = self.create_out_table_definition('output.csv', incremental=True, primary_key=['id'])
+        table = self.create_out_table_definition('deals.csv', incremental=True, primary_key=['id'])
 
         # get file path of the table (data/out/tables/Features.csv)
         out_table_path = table.full_path
