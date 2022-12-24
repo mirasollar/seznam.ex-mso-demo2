@@ -17,6 +17,7 @@ KEY_API_TOKEN = '#private_app_token'
 # component will fail with readable message on initialization.
 REQUIRED_PARAMETERS = [KEY_API_TOKEN]
 
+
 class Component(ComponentBase):
     """
         Extends base class for general Python components. Initializes the CommonInterface
@@ -63,11 +64,7 @@ class Component(ComponentBase):
         out_file = csv.writer(open(table.full_path, mode="wt", encoding='utf-8', newline=''))
         out_file.writerow(["id", "amount", "dealname", "timestamp"])
         for deals in deals:
-            out_file.writerow([deals["id"],
-                        deals["properties"]["amount"],
-                        deals["properties"]["dealname"],
-                        datetime.now().isoformat()
-                        ])
+            out_file.writerow([deals["id"], deals["properties"]["amount"], deals["properties"]["dealname"], datetime.now().isoformat()])
 
         # with open(table.full_path, mode='wt', encoding='utf-8', newline='') as out_file:
         #     writer = csv.DictWriter(out_file, fieldnames=['timestamp'])
