@@ -5,7 +5,7 @@ Template Component main class.
 import csv
 import logging
 from datetime import datetime
-from mso_hapi import HubspotAPI
+import mso_hapi
 
 from keboola.component.base import ComponentBase
 from keboola.component.exceptions import UserException
