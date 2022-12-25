@@ -75,7 +75,7 @@ class Component(ComponentBase):
         for deals in deals:
             out_file.writerow([deals["id"],
                                deals["properties"]["amount"],
-                               deals["properties"]["dealname"])
+                               deals["properties"]["dealname"]])
 
         # with open(table.full_path, mode='wt', encoding='utf-8', newline='') as out_file:
         #     writer = csv.DictWriter(out_file, fieldnames=['timestamp'])
