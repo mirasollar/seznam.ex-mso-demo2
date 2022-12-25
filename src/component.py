@@ -58,7 +58,7 @@ class Component(ComponentBase):
         table = self.create_out_table_definition('deals.csv', incremental=incremental, primary_key=['id'])
 
         # get file path of the table (data/out/tables/Features.csv)
-        out_table_path = table.full_path
+        # out_table_path = table.full_path
         # logging.info(out_table_path)
 
         # DO whatever and save into out_table_path
