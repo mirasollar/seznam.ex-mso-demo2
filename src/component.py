@@ -12,10 +12,16 @@ from keboola.component.exceptions import UserException
 
 # configuration variables
 KEY_API_TOKEN = '#private_app_token'
+KEY_DEALS_CNT = 'deals_cnt'
+KEY_INCREMENTAL = 'incrementalLoad'
 
 # list of mandatory parameters => if some is missing,
 # component will fail with readable message on initialization.
-REQUIRED_PARAMETERS = [KEY_API_TOKEN]
+REQUIRED_PARAMETERS = [
+    KEY_API_TOKEN,
+    KEY_DEALS_CNT,
+    KEY_INCREMENTAL
+]
 
 
 class Component(ComponentBase):
@@ -49,7 +55,8 @@ class Component(ComponentBase):
         # logging.info(previous_state.get('some_state_parameter'))
 
         # Create output table (Tabledefinition - just metadata)
-        table = self.create_out_table_definition('deals.csv', incremental=True, primary_key=['id'])
+        incremental = params.get(KEY_INCREMENTAL)
+        table = self.create_out_table_definition('deals.csv', incremental=incremental, primary_key=['id'])
 
         # get file path of the table (data/out/tables/Features.csv)
         out_table_path = table.full_path
@@ -58,8 +65,10 @@ class Component(ComponentBase):
         # DO whatever and save into out_table_path
         token = params.get(KEY_API_TOKEN)
         hubspot_data = hapi.HubspotAPI(token)
+        
+        deals_cnt = params.get(KEY_DEALS_CNT)
 
-        deals = hubspot_data.getDeals()
+        deals = hubspot_data.getDeals(limit=deals_cnt)
 
         out_file = csv.writer(open(table.full_path, mode="wt", encoding='utf-8', newline=''))
         out_file.writerow(["id", "amount", "dealname", "timestamp"])
