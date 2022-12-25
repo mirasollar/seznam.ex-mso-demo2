@@ -7,7 +7,9 @@
   "properties": {
     "#private_app_token": {
       "type": "string",
-      "title": "Private App Token"
+      "title": "Private App Token",
+      "format": "password",
+      "propertyOrder": 100
     }
   }
 }
