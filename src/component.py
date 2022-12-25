@@ -12,8 +12,8 @@ from keboola.component.exceptions import UserException
 
 # configuration variables
 KEY_API_TOKEN = '#private_app_token'
-KEY_DEALS_CNT = 'deals_cnt'
 KEY_INCREMENTAL = 'incremental_output'
+KEY_DEALS_CNT = 'deals_cnt'
 
 # list of mandatory parameters => if some is missing,
 # component will fail with readable message on initialization.
