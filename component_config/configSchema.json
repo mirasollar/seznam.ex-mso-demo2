@@ -37,7 +37,7 @@
     "propertyOrder": 200
     },
      "deals_cnt": {
-    "type": "number",
+    "type": "integer",
     "title": "Number of Deals",
     "propertyOrder": 300
     }
