@@ -46,8 +46,9 @@ class Component(ComponentBase):
         self.validate_configuration_parameters(REQUIRED_PARAMETERS)
         params = self.configuration.parameters
         # Access parameters in data/config.json
-        # if params.get(KEY_PRINT_HELLO):
-        #     logging.info("Hello World")
+        if params.get(KEY_API_TOKEN):
+            logging.info("Hello World")
+        logging.info('Loading configuration...')
 
         # get last state data/in/state.json from previous run
         # previous_state = self.get_state_file()
@@ -62,6 +63,7 @@ class Component(ComponentBase):
         logging.info(out_table_path)
 
         # DO whatever and save into out_table_path
+        logging.info('Extracting Deals from HubSpot CRM')
         token = params.get(KEY_API_TOKEN)
         hubspot_data = hapi.HubspotAPI(token)
 
