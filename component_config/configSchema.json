@@ -1,8 +1,10 @@
 {
   "type": "object",
-  "title": "Authentication",
+  "title": "Configuration",
   "required": [
-    "#private_app_token"
+    "#private_app_token",
+    "incremental_output",
+    "deals_cnt"
   ],
   "properties": {
     "#private_app_token": {
@@ -10,15 +12,7 @@
       "title": "Private App Token",
       "format": "password",
       "propertyOrder": 100
-    }
-  },
-  "type": "object",
-  "title": "Configuration",
-  "required": [
-    "incremental_output",
-    "deals_cnt"
-  ],
-  "properties": {
+    },
     "incremental_output": {
     "type": "number",
     "enum": [
@@ -33,7 +27,7 @@
       },
     "default": 1,
     "title": "Load type",
-    "description": "If set to Incremental update, the result tables will be updated based on primary key. Full load overwrites the destination table each time.",
+    "description": "If set to Incremental update, the result table will be updated based on primary key. Full load overwrites the destination table each time.",
     "propertyOrder": 200
     },
      "deals_cnt": {
