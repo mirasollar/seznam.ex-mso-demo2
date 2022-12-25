@@ -13,7 +13,7 @@ from keboola.component.exceptions import UserException
 # configuration variables
 KEY_API_TOKEN = '#private_app_token'
 KEY_DEALS_CNT = 'deals_cnt'
-KEY_INCREMENTAL = 'incrementalLoad'
+KEY_INCREMENTAL = 'incremental_output'
 
 # list of mandatory parameters => if some is missing,
 # component will fail with readable message on initialization.
@@ -65,7 +65,7 @@ class Component(ComponentBase):
         # DO whatever and save into out_table_path
         token = params.get(KEY_API_TOKEN)
         hubspot_data = hapi.HubspotAPI(token)
-        
+
         deals_cnt = params.get(KEY_DEALS_CNT)
 
         deals = hubspot_data.getDeals(limit=deals_cnt)
