@@ -82,7 +82,8 @@ class Component(ComponentBase):
         #     writer.writerow({"timestamp": datetime.now().isoformat()})
 
         # Save table manifest (output.csv.manifest) from the tabledefinition
-        self.write_manifest(table)
+        manifest = self.create_out_table_definition('deals', incremental=incremental, primary_key=['id'])
+        self.write_manifest(manifest)
 
         # Write new state - will be available next run
         self.write_state_file({"some_state_parameter": "value"})
