@@ -71,12 +71,11 @@ class Component(ComponentBase):
         deals = hubspot_data.getDeals(limit=deals_cnt)
 
         out_file = csv.writer(open(table.full_path, mode="wt", encoding='utf-8', newline=''))
-        out_file.writerow(["id", "amount", "dealname", "timestamp"])
+        out_file.writerow(["id", "amount", "dealname")
         for deals in deals:
             out_file.writerow([deals["id"],
                                deals["properties"]["amount"],
-                               deals["properties"]["dealname"],
-                               datetime.now().isoformat()])
+                               deals["properties"]["dealname"])
 
         # with open(table.full_path, mode='wt', encoding='utf-8', newline='') as out_file:
         #     writer = csv.DictWriter(out_file, fieldnames=['timestamp'])
